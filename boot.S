@@ -1,3 +1,6 @@
+@ This is the first piece of code that gets executed
+@ It helps set up the C runtime environment and runs the kernel
+
 .section ".text.boot"
 
 .global _start
