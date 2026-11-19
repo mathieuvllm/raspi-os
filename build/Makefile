@@ -6,7 +6,7 @@ LFLAGS = -ffreestanding -O2 -nostdlib
 
 KER_SRC = ../src/kernel
 KER_HEAD = ../include
-COMMOMN_SRC = ../src/common
+COMMON_SRC = ../src/common
 OBJ_DIR = objects
 KERSOURCES = $(wildcard $(KER_SRC)/*.c)
 COMMONSOURCES = $(wildcard $(COMMON_SRC)/*.c)
