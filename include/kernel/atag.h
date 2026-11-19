@@ -1,7 +1,7 @@
 #ifndef ATAG_H
 #define ATAG_H
 
-#include <common/stdint.h>
+#include <stdint.h>
 
 typedef enum {
 	NONE		= 0x00000000,	/* Empty tag used to end list */
