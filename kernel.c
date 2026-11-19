@@ -8,7 +8,7 @@ static inline void mmio_write(uint32_t reg, uint32_t data) {
 	*(volatile uint32_t*)reg = data;
 }
 
-static inline uint32_t mmio_read(uint32 reg) {
+static inline uint32_t mmio_read(uint32_t reg) {
 	return *(volatile uint32_t*)reg;
 }
 
@@ -89,7 +89,7 @@ unsigned char uart_getc() {
 }
 
 void uart_puts(const char *str) {
-	for (size i = 0; str[i] != '\0'; i++)
+	for (size_t i = 0; str[i] != '\0'; i++)
 		uart_putc((unsigned char)str[i]);
 }
 
