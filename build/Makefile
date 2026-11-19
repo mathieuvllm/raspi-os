@@ -1,6 +1,6 @@
 CC = arm-none-eabi-gcc
 CPU = cortex-a7
-CFLAGS = -mcpu=$(CPU) -fpic -ffreestanding -std=c23
+CFLAGS = -mcpu=$(CPU) -fpic -ffreestanding -std=gnu23
 CSRCFLAGS = -O2 -Wall -Wextra
 LFLAGS = -ffreestanding -O2 -nostdlib
 
