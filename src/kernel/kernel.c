@@ -1,4 +1,5 @@
 #include <kernel/uart.h>
+#include <common/stdio.h>
 
 void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags) {
 	(void) r0;
@@ -6,10 +7,10 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags) {
 	(void) atags;
 
 	uart_init();
-	uart_puts("hello world!\n");
+	puts("hello world!\n");
 
 	while (1) {
-		uart_putc(uart_getc());
-		uart_putc('\n');
+		putc(uart_getc());
+		putc('\n');
 	}
 }
