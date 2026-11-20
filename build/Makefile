@@ -15,11 +15,22 @@ OBJECTS = $(patsubst $(KER_SRC)/%.c, $(OBJ_DIR)/%.o, $(KERSOURCES))
 OBJECTS += $(patsubst $(COMMON_SRC)/%.c, $(OBJ_DIR)/%.o, $(COMMONSOURCES))
 OBJECTS += $(patsubst $(KER_SRC)/%.S, $(OBJ_DIR)/%.o, $(ASMSOURCES))
 
+ELF_NAME = kernel.elf
 IMG_NAME = kernel.img
+OBJCOPY = arm-none-eabi-objcopy
+LOAD_ADDR ?= 0x8000                # real Pi
 
-build: $(OBJECTS) $(HEADERS)
-	echo $(OBJECTS)
-	$(CC) -T linker.ld -o $(IMG_NAME) $(LFLAGS) $(OBJECTS)
+# build: $(OBJECTS) $(HEADERS)
+# 	echo $(OBJECTS)
+# 	$(CC) -T linker.ld -o $(IMG_NAME) $(LFLAGS) $(OBJECTS)
+
+build: $(IMG_NAME)
+
+$(ELF_NAME): $(OBJECTS) $(HEADERS) linker.ld
+	$(CC) -T linker.ld -Wl,--defsym=LOAD_ADDR=$(LOAD_ADDR) -o $@ $(LFLAGS) $(OBJECTS)
+
+$(IMG_NAME): $(ELF_NAME)
+	$(OBJCOPY) $< -O binary $@
 
 $(OBJ_DIR)/%.o: $(KER_SRC)/%.c
 	mkdir -p $(@D)
@@ -35,7 +46,13 @@ $(OBJ_DIR)/%.o: $(COMMON_SRC)/%.c
 
 clean:
 	rm -rf $(OBJ_DIR)
-	rm $(IMG_NAME)
+	rm -f $(ELF_NAME) $(IMG_NAME)
 
-run: build
-	qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel kernel.img
+# run: build
+# 	qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel kernel.img
+
+run: LOAD_ADDR = 0x10000
+run: clean build
+	qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel $(IMG_NAME)
+
+.PHONY: build clean run

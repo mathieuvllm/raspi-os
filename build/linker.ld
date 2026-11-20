@@ -2,8 +2,7 @@ ENTRY(_start)
 
 SECTIONS
 {
-  /* start at 0x8000 */
-  . = 0x8000;
+  . = DEFINED(LOAD_ADDR) ? LOAD_ADDR : 0x8000;
   __start = .;
   __text_start = .;
   .text :
