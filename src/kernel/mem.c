@@ -5,10 +5,14 @@
 #include <kernel/atag.h>
 #include <common/stdlib.h>
 #include <stdint.h>
+#include <common/debug.h>
+#include <common/stdio.h>
 
 extern uint8_t __end;	/* symbol declared in build/linker.ld */
 
 static uint32_t num_pages;
+
+static void check_page(void *p);
 
 typedef struct page_list {
 	page_t *head;
@@ -98,6 +102,7 @@ void *alloc_page(void) {
 	page_mem = (void *)((page - all_pages_array) * PAGE_SIZE);
 
 	bzero(page_mem, PAGE_SIZE);
+	check_page(page_mem);
 
 	return page_mem;
 }
@@ -107,6 +112,20 @@ void free_page(void *ptr) {
 	page = all_pages_array + ((uint32_t) ptr / PAGE_SIZE);
 	page->flags.allocated = 0;
 	append_page_list(&free_pages, page);
+}
+
+void check_page(void *p) {
+	uint32_t addr = (uint32_t)p;
+	puts("page @ ");
+	puthex(addr);
+	puts("\n");
+
+	if (!p)
+		puts("	FAIL: NULL\n");
+	if (addr & (PAGE_SIZE - 1))
+		puts("	FAIL: unaligned\n");
+	if (addr < (uint32_t)&__end)
+		puts("	FAIL: overlaps kernel\n");
 }
 
 #endif

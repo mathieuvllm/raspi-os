@@ -1,10 +1,14 @@
 #include <kernel/uart.h>
 #include <common/stdio.h>
 #include <kernel/mem.h>
+#include <common/debug.h>
 
 void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags) {
 	(void) r0;
 	(void) r1;
+	puts("r0="); puthex(r0); puts(" r1="); puthex(r1); puts(" r2="); puthex(atags); puts("\n");
+	uint32_t *w = (uint32_t *)atags;
+	for (int i = 0; i < 12; i++) { puthex(w[i]); puts("\n"); }
 
 	uart_init();
 	mem_init((atag_t *)atags);
