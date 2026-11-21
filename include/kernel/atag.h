@@ -17,8 +17,8 @@ typedef struct {
 } atag_header_t;
 
 typedef struct {
-	uint32_t start;
 	uint32_t size;
+	uint32_t start;
 } atag_mem_t;
 
 typedef struct {

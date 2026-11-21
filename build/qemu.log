@@ -1,0 +1,224 @@
+Taking exception 13 [Secure Monitor Call] on CPU 0
+...from EL1 to EL3
+...with ESR 0x13/0x4e000000
+Exception return from AArch32 mon to svc PC 0x448
+Taking exception 13 [Secure Monitor Call] on CPU 2
+...from EL1 to EL3
+...with ESR 0x13/0x4e000000
+Exception return from AArch32 mon to svc PC 0x448
+Taking exception 13 [Secure Monitor Call] on CPU 3
+...from EL1 to EL3
+...with ESR 0x13/0x4e000000
+Exception return from AArch32 mon to svc PC 0x448
+Taking exception 13 [Secure Monitor Call] on CPU 1
+...from EL1 to EL3
+...with ESR 0x13/0x4e000000
+Exception return from AArch32 mon to svc PC 0x448
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000
+Taking exception 4 [Data Abort] on CPU 0
+...from EL1 to EL1
+...with ESR 0x25/0x9600007f
+...with DFSR 0x808 DFAR 0xa9000000

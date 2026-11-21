@@ -1,6 +1,6 @@
 CC = arm-none-eabi-gcc
 CPU = cortex-a7
-CFLAGS = -mcpu=$(CPU) -fpic -ffreestanding -std=gnu23
+CFLAGS = -mcpu=$(CPU) -ffreestanding -std=gnu23 -g
 CSRCFLAGS = -O2 -Wall -Wextra
 LFLAGS = -ffreestanding -O2 -nostdlib
 
@@ -18,11 +18,7 @@ OBJECTS += $(patsubst $(KER_SRC)/%.S, $(OBJ_DIR)/%.o, $(ASMSOURCES))
 ELF_NAME = kernel.elf
 IMG_NAME = kernel.img
 OBJCOPY = arm-none-eabi-objcopy
-LOAD_ADDR ?= 0x8000                # real Pi
-
-# build: $(OBJECTS) $(HEADERS)
-# 	echo $(OBJECTS)
-# 	$(CC) -T linker.ld -o $(IMG_NAME) $(LFLAGS) $(OBJECTS)
+LOAD_ADDR ?= 0x8000
 
 build: $(IMG_NAME)
 
@@ -48,11 +44,12 @@ clean:
 	rm -rf $(OBJ_DIR)
 	rm -f $(ELF_NAME) $(IMG_NAME)
 
-# run: build
-# 	qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel kernel.img
-
 run: LOAD_ADDR = 0x10000
 run: clean build
 	qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel $(IMG_NAME)
 
-.PHONY: build clean run
+debug: LOAD_ADDR = 0x10000
+debug: clean build
+	qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel $(IMG_NAME) -s -S
+
+.PHONY: build clean run debug
