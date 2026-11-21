@@ -1,2 +1,4 @@
 build/kernel.img
 build/objects/*
+build/kernel.elf
+build/test.log

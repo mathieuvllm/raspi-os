@@ -18,6 +18,9 @@ typedef struct page {
 	struct page *next;
 } page_t;
 
+extern uint32_t mem_size;
+extern uint32_t kernel_end;
+
 void mem_init(atag_t *atags);
 void *alloc_page(void);
 void free_page(void *ptr);

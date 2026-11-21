@@ -12,8 +12,8 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags) {
 	mem_init((atag_t *)atags);
 
 #ifdef KERNEL_TEST
+	#include <tests/tests.h>
 	run_tests();
-	qemu_exit(ok);
 #endif
 
 

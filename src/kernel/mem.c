@@ -12,8 +12,6 @@ extern uint8_t __end;	/* symbol declared in build/linker.ld */
 
 static uint32_t num_pages;
 
-static void check_page(void *p);
-
 typedef struct page_list {
 	page_t *head;
 	uint32_t size;
@@ -52,17 +50,22 @@ page_t *next_page_list(page_t *node) {
 
 static page_t *all_pages_array;
 page_list_t free_pages;
+uint32_t mem_size;
+uint32_t kernel_end;
+
+#define PAGE_ALIGN_UP(x) (((x) + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1))
 
 /* set up pages to get basic memory allocations working */
 void mem_init(atag_t *atags) {
-	uint32_t mem_size, page_array_len, page_array_end, kernel_pages, i;
+	uint32_t page_array_len, page_array_end, kernel_pages, i;
 
 	mem_size = get_mem_size(atags);
 	num_pages = mem_size / PAGE_SIZE;
 	page_array_len = sizeof(page_t) * num_pages;
 	all_pages_array = (page_t *)&__end;
 	page_array_end = (uint32_t)&__end + page_array_len;
-	kernel_pages = (page_array_end + PAGE_SIZE - 1) / PAGE_SIZE;
+	kernel_end = page_array_end + PAGE_SIZE - 1;
+	kernel_pages = PAGE_ALIGN_UP(kernel_end) / PAGE_SIZE;
 
 	bzero(all_pages_array, page_array_len);
 	free_pages.head = nullptr;
@@ -86,7 +89,7 @@ void *alloc_page(void) {
 	void *page_mem;
 
 	if (size_page_list(&free_pages) == 0)
-		return 0;
+		return nullptr;
 
 	page = pop_page_list(&free_pages);
 	if (page == nullptr) {
@@ -99,30 +102,18 @@ void *alloc_page(void) {
 	page_mem = (void *)((page - all_pages_array) * PAGE_SIZE);
 
 	bzero(page_mem, PAGE_SIZE);
-	check_page(page_mem);
 
 	return page_mem;
 }
 
 void free_page(void *ptr) {
+	uint32_t *p = (uint32_t *)ptr;
+	if (*p == 0xDEADBEEF) return;
 	page_t *page;
 	page = all_pages_array + ((uint32_t) ptr / PAGE_SIZE);
+	*p = 0xDEADBEEF;	// used to check use after free or double free
 	page->flags.allocated = 0;
 	push_page_list(&free_pages, page);
-}
-
-void check_page(void *p) {
-	uint32_t addr = (uint32_t)p;
-	debug_puts("page @ ");
-	puthex(addr);
-	debug_puts("\n");
-
-	if (!p)
-		debug_puts("	FAIL: NULL\n");
-	if (addr & (PAGE_SIZE - 1))
-		debug_puts("	FAIL: unaligned\n");
-	if (addr < (uint32_t)&__end)
-		debug_puts("	FAIL: overlaps kernel\n");
 }
 
 #endif

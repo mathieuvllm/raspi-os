@@ -7,13 +7,21 @@ LFLAGS = -ffreestanding -O2 -nostdlib
 KER_SRC = ../src/kernel
 KER_HEAD = ../include
 COMMON_SRC = ../src/common
+TESTS_SRC = ../src/tests
 OBJ_DIR = objects
 KERSOURCES = $(wildcard $(KER_SRC)/*.c)
 COMMONSOURCES = $(wildcard $(COMMON_SRC)/*.c)
+TESTSSOURCES = $(wildcard $(TESTS_SRC)/*.c)
 ASMSOURCES = $(wildcard $(KER_SRC)/*.S)
 OBJECTS = $(patsubst $(KER_SRC)/%.c, $(OBJ_DIR)/%.o, $(KERSOURCES))
 OBJECTS += $(patsubst $(COMMON_SRC)/%.c, $(OBJ_DIR)/%.o, $(COMMONSOURCES))
 OBJECTS += $(patsubst $(KER_SRC)/%.S, $(OBJ_DIR)/%.o, $(ASMSOURCES))
+
+ifdef TEST
+	CFLAGS += -DKERNEL_TEST
+	OBJECTS += $(patsubst $(TESTS_SRC)/%.c, $(OBJ_DIR)/%.o, $(TESTSSOURCES))
+	LOAD_ADDR = 0x10000
+endif
 
 ELF_NAME = kernel.elf
 IMG_NAME = kernel.img
@@ -40,6 +48,10 @@ $(OBJ_DIR)/%.o: $(COMMON_SRC)/%.c
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -I$(KER_SRC) -I$(KER_HEAD) -c $< -o $@ $(CSRCFLAGS)
 
+$(OBJ_DIR)/%.o: $(TESTS_SRC)/%.c
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -I$(KER_SRC) -I$(KER_HEAD) -c $< -o $@ $(CSRCFLAGS)
+
 clean:
 	rm -rf $(OBJ_DIR)
 	rm -f $(ELF_NAME) $(IMG_NAME)
@@ -52,4 +64,12 @@ debug: LOAD_ADDR = 0x10000
 debug: clean build
 	qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel $(IMG_NAME) -s -S
 
-.PHONY: build clean run debug
+test:
+	$(MAKE) clean
+	$(MAKE) build TEST=1
+	timeout 10 qemu-system-arm -m 1024 -M raspi2b -display none -monitor none \
+	    -semihosting -serial file:test.log -kernel $(IMG_NAME) ; \
+	cat test.log ; \
+	grep -q "TESTS PASSED" test.log
+
+.PHONY: build clean run debug test

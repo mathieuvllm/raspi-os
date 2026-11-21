@@ -15,6 +15,7 @@ void puthex(uint32_t v) {
 		for (int i = 28; i >= 0; i -= 4) {
 			putc("0123456789abcdef"[(v >> i) & 0xF]);
 		}
+		puts("\r\n");
 	}
 }
 
