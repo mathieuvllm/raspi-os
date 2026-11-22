@@ -1,14 +1,22 @@
-# (Cross-)Compilation
-Cross-compiler from x86 Linux to ARM : `arm-none-eabi-gcc`
-## Compiling the kernel
-`arm-none-eabi-gcc -mcpu=cortex-a7 -fpic -ffreestanding -c boot.S -o boot.o`
-This compiles boot.S
-`arm-none-eabi-gcc -mcpu=cortex-a7 -fpic -ffreestanding -std=gnu99 -c kernel.c -o kernel.o -O2 -Wall -Wextra`
-This compiles kernel.c
-`arm-none-eabi-gcc -T linker.ld -o myos.elf -ffreestanding -O2 -nostdlib boot.o kernel.o`
-This links everything
-# QEMU
-dnf package `qemu-system-arm`
-## Running the kernel
-`qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel myos.elf`
-Emulates the Rpi 2 mobel B revision 1.1 with 1Gb of RAM, simulating serial connection for I/O, and running my kernel
+# Raspberry Pi kernel
+This is a kernel / small OS I am developing for my Raspberry Pi 2 model B (revision 1.1).
+I am using jsandler18's [excellent tutorial](https://jsandler18.github.io/) as an inspiration, although my goal is to go beyond what is shown in the tutorial.
+This is still a WIP, as I have just finished implementing and testing memory pages.
+## How to run the kernel
+There are 2 ways to run the kernel :
+  - 1. Using qemu
+  - 2. Bare-metal (must have a Raspberry Pi 2)
+### Using qemu
+This is the simplest option right now. Simply run :
+```sh
+cd build && make run
+```
+### Bare-metal
+WIP
+## Makefile targets
+The Makefile has 5 targets : `build`, `clean`, `run`, `debug`, and `test`.
+`build` creates the elf and img files of the kernel
+`clean` cleans the build folder
+`run` runs the kernel with qemu
+`debug` allows you to use gdb to debug the code
+`test` runs the tests I wrote
