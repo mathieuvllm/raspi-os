@@ -4,8 +4,8 @@ I am using jsandler18's [excellent tutorial](https://jsandler18.github.io/) as a
 This is still a WIP, as I have just finished implementing and testing memory pages.
 ## How to run the kernel
 There are 2 ways to run the kernel :
-  + 1. Using qemu
-  + 2. Bare-metal (must have a Raspberry Pi 2)
+  1. Using qemu
+  2. Bare-metal (must have a Raspberry Pi 2)
 ### Using qemu
 This is the simplest option right now. Simply run :
 ```sh
